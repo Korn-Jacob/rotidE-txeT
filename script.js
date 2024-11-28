@@ -38,6 +38,7 @@ function typeBackwardsNormal(e) {
 function typeBackwardsWords(e) {
     if (e.key === " ") {
         text.childNodes[0].data = text.childNodes[0].data
+        setTimeout(() => window.getSelection().setPosition(text.childNodes[0], 0), 3);
     }
 
     if (e.key === "Backspace") {
