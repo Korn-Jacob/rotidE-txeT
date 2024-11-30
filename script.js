@@ -1,5 +1,7 @@
 let text = document.getElementById("text");
 let mode = document.getElementById("backwards-mode");
+let typeHere = document.getElementById("type-here");
+let header = document.getElementById("header");
 
 document.addEventListener("keydown", (e) => {
     switch (mode.value) {
@@ -12,9 +14,8 @@ document.addEventListener("keydown", (e) => {
         case "Backwards characters":
             typeBackwardsCharacters(e);
             break;
-            
-
     }
+    setTimeout(updateTypeHere, 1);
 });
 
 function typeBackwardsNormal(e) {
@@ -95,3 +96,38 @@ function cursor_position() {
 
     return pos;
 }
+
+
+function updateTypeHere() {
+    typeHere.style.visibility = text.childNodes ? "hidden" : "default";
+}
+
+switch (mode.value) {
+    case "Normal":
+        typeHere.innerText = "...ereh epyT"
+        header.innerText = "!rotide txet sdrawkcaB"
+        break;
+    case "Words":
+        typeHere.innerText = "here... Type"
+        header.innerText = "editor! text Backwards"
+        break;
+    case "Backwards characters":
+        typeHere.innerText = "...ɘɿɘ⑁ ɘqγT"
+        header.innerText = "!ɿoɟibɘ ɟxɘɟ ƨbɿɒwʞɔɒᗺ";
+        break;
+}
+
+function clear() {
+    console.log("?");
+    text.childNodes[0].data = "";
+}
+
+function copy() {
+    navigator.clipboard.writeText(text.childNodes[0].data);
+    clear();
+    alert("copied!");
+}
+
+document.getElementById("copy").onclick = copy;
+document.getElementById("clear").onclick = clear;
+mode.onchange = () => {window.location.reload(); clear()};

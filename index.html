@@ -6,17 +6,23 @@
     </head>
     <body spellcheck="false">
         <div class="middle">
-            <h2>
+            <h2 id="header">
                 !rotide txet sdrawkcaB
             </h2>
             <div id="text" contenteditable="true"></div>
-
-            <label for="backwards-mode">Backwards mode:</label>
-            <select id="backwards-mode">
-                <option selected>Normal</option>
-                <option>Words</option>
-                <option>Backwards characters</option>
-            </select>
+            <div id="type-here">...ereh epyT</div>
+            <div id="backwards-mode-container">
+                <label for="backwards-mode">Backwards mode:</label>
+                <select id="backwards-mode">
+                    <option selected>Normal</option>
+                    <option>Words</option>
+                    <option>Backwards characters</option>
+                </select>
+            </div>
+            <div>
+                <button id="copy">Copy</button>
+                <button id="clear">Clear</button>
+            </div>
         </div>
     </body>
     <script src="script.js"></script>
