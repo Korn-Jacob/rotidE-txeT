@@ -1,9 +1,16 @@
+// document.getElementById();
 let text = document.getElementById("text");
 let mode = document.getElementById("backwards-mode");
 let typeHere = document.getElementById("type-here");
 let header = document.getElementById("header");
+let count = document.getElementById("count");
+let words = document.getElementById("words");
 
 document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        return;
+    }
     switch (mode.value) {
         case "Normal":
             typeBackwardsNormal(e);
@@ -16,6 +23,7 @@ document.addEventListener("keydown", (e) => {
             break;
     }
     setTimeout(updateTypeHere, 1);
+    setTimeout(updateCounts, 1);
 });
 
 function typeBackwardsNormal(e) {
@@ -102,6 +110,11 @@ function updateTypeHere() {
     typeHere.style.visibility = text.childNodes ? "hidden" : "default";
 }
 
+function updateCounts() {
+    count.innerHTML = text.childNodes[0]?.data?.length || 0;
+    words.innerHTML = text.childNodes[0]?.data?.length ? text.childNodes[0].data.split(" ").length : 0;
+}
+
 switch (mode.value) {
     case "Normal":
         typeHere.innerText = "...ereh epyT"
@@ -118,7 +131,6 @@ switch (mode.value) {
 }
 
 function clear() {
-    console.log("?");
     text.childNodes[0].data = "";
 }
 

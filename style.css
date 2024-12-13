@@ -15,7 +15,8 @@ html, body {
     border: solid black 1px;
     width: 300px;
     text-align: right;
-    height: 20px;
+    text-wrap: wrap;
+    min-height: 20px;
 }
 
 .middle {
